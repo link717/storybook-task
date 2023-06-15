@@ -1,18 +1,18 @@
 import React from 'react';
 
-interface Task {
+export interface ITask {
   id: string;
   title: string;
   state: 'TASK_INBOX' | 'TASK_PINNED' | 'TASK_ARCHIVED';
 }
 
-interface TaskProps {
-  task: Task;
+interface ITaskProps {
+  task: ITask;
   onArchiveTask: (id: string) => void;
   onPinTask: (id: string) => void;
 }
 
-export default function Task({ task: { id, title, state }, onArchiveTask, onPinTask }: TaskProps) {
+export default function Task({ task: { id, title, state }, onArchiveTask, onPinTask }: ITaskProps) {
   return (
     <div className={`list-item ${state}`}>
       <label className="checkbox">
