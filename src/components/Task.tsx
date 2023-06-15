@@ -26,7 +26,7 @@ export default function Task({ task: { id, title, state }, onArchiveTask, onPinT
       <div className="actions" onClick={(event) => event.stopPropagation()}>
         {state !== 'TASK_ARCHIVED' && (
           <a onClick={() => onPinTask(id)}>
-            <span className="icon-star" id={`pinTask-${id}`} aria-label={`pinTask-${id}`} />
+            <span role="button" className="icon-star" id={`pinTask-${id}`} aria-label={`pinTask-${id}`} />
           </a>
         )}
       </div>
