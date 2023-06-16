@@ -19,7 +19,7 @@ export default function Task({ task: { id, title, state }, onArchiveTask, onPinT
     <div className={`list-item ${state}`}>
       <label className="checkbox">
         <input type="checkbox" defaultChecked={state === 'TASK_ARCHIVED'} disabled={true} name="checked" />
-        <span className="checkbox-custom" onClick={() => onArchiveTask(id)} id={`archiveTask-${id}`} aria-label={`archiveTask-${id}`} />
+        <span role="button" className="checkbox-custom" onClick={() => onArchiveTask(id)} id={`archiveTask-${id}`} aria-label={`archiveTask-${id}`} />
       </label>
       <div className="title">
         <input type="text" value={title} readOnly={true} placeholder="Input title" />
