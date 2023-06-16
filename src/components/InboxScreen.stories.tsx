@@ -1,4 +1,5 @@
 import type { Meta } from '@storybook/react';
+import { fireEvent, waitFor, waitForElementToBeRemoved, within } from '@storybook/testing-library';
 import { rest } from 'msw';
 import React from 'react';
 import { Provider } from 'react-redux';
@@ -24,6 +25,18 @@ export const Default = {
         }),
       ],
     },
+  },
+  play: async ({ canvasElement }: { canvasElement: HTMLCanvasElement }) => {
+    const canvas = within(canvasElement);
+    // Waits for the component to transition from the loading state
+    await waitForElementToBeRemoved(await canvas.findByTestId('loading'));
+    // Waits for the component to be updated based on the store
+    await waitFor(() => {
+      // Simulates pinning the first task
+      fireEvent.click(canvas.getByLabelText('pinTask-1'));
+      // Simulates pinning the third task
+      fireEvent.click(canvas.getByLabelText('pinTask-3'));
+    });
   },
 };
 
