@@ -2,15 +2,10 @@ import { configureStore, createSlice } from '@reduxjs/toolkit';
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { Provider } from 'react-redux';
+import { TaskBoxType } from 'lib/store';
 import { ITask } from './Task';
 import * as TaskStories from './Task.stories';
 import TaskList from './TaskList';
-
-export interface IMockedState {
-  tasks: ITask[];
-  status: 'idle' | 'loading' | 'error';
-  error: null | string;
-}
 
 export const MockedState = {
   tasks: [
@@ -23,10 +18,10 @@ export const MockedState = {
   ],
   status: 'idle',
   error: null,
-} satisfies IMockedState;
+} satisfies TaskBoxType;
 
 interface IMockstoreProps extends React.PropsWithChildren {
-  taskboxState: IMockedState;
+  taskboxState: TaskBoxType;
 }
 
 // A super-simple mock of a redux store
